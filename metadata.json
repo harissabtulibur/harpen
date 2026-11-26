@@ -2,5 +2,7 @@
   "name": "HARPEN — Native Android Studio Project",
   "description": "Complete native Android Kotlin & Jetpack Compose digital notebook, drawing studio, PalmGuard input engine, offline OCR, and PDF annotation studio.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
