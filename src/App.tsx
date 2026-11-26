@@ -31,11 +31,14 @@ type ModuleCategory =
 
 type ActiveTab = 'files' | 'architecture' | 'build';
 
-const rawModules = import.meta.glob('/harpen-android/**/*', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>;
+const rawModules = import.meta.glob(
+  ['/harpen-android/**/*', '/harpen-android/.github/**/*'],
+  {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  }
+) as Record<string, string>;
 
 function classifyCategory(shortPath: string): Exclude<ModuleCategory, 'All'> {
   if (shortPath.includes('/test/')) return 'Tests';
@@ -183,7 +186,7 @@ export default function App() {
   function handleDownloadZip() {
     const blob = createZipBlob(
       files.map((f) => ({
-        path: `harpen-android/${f.shortPath}`,
+        path: f.shortPath,
         content: f.content,
       }))
     );
@@ -505,7 +508,19 @@ export default function App() {
             <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-3">
               <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
                 <Terminal className="w-4 h-4 text-teal-700" />
-                <span>02. Command-Line Gradle Build</span>
+                <span>02. GitHub Actions APK Build (Run Workflow)</span>
+              </div>
+              <p className="text-sm text-slate-600">
+                A <code className="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">.github/workflows/build-apk.yml</code> file with{' '}
+                <code className="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">workflow_dispatch</code> is included in both the repository root and inside{' '}
+                <code className="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">harpen-android/</code>. Ensure <code className="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">.github/workflows/build-apk.yml</code> is pushed to your default branch (<code className="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">main</code>) at the root of the GitHub repository so the <strong>Run workflow</strong> button appears under the Actions tab.
+              </p>
+            </div>
+
+            <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-3">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                <Terminal className="w-4 h-4 text-teal-700" />
+                <span>03. Command-Line Gradle Build</span>
               </div>
               <pre className="bg-slate-900 text-slate-100 rounded-lg p-4 text-xs font-mono overflow-x-auto leading-relaxed">
 {`cd harpen-android
