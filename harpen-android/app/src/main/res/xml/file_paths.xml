@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <files-path name="harpen_projects" path="projects/" />
+    <files-path name="harpen_backups" path="backups/" />
+    <cache-path name="harpen_exports" path="exports/" />
+    <cache-path name="harpen_scans" path="scans/" />
+</paths>
