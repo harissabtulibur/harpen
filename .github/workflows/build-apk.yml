@@ -15,9 +15,6 @@ on:
     branches:
       - main
       - master
-    paths:
-      - 'harpen-android/**'
-      - '.github/workflows/build-apk.yml'
 
 jobs:
   build-apk:
@@ -36,7 +33,7 @@ jobs:
           elif [ -f "settings.gradle.kts" ]; then
             echo "dir=." >> "$GITHUB_OUTPUT"
           else
-            echo "Could not find settings.gradle.kts in repository root or harpen-android/." >&2
+            echo "Could not find settings.gradle.kts." >&2
             exit 1
           fi
 
